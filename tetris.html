@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+
+uniform mat4 rotation;
+uniform mat4 projection;
+uniform mat4 modelview;
+
+
+
+void main()
+{
+    gl_Position = projection * modelview * vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+uniform vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="Common/webgl-utils.js"></script>
+<script type="text/javascript" src="Common/initShaders.js"></script>
+<script type="text/javascript" src="Common/MV.js"></script>
+<script type="text/javascript" src="tetris.js"></script>
+
+<body>
+<canvas id="gl-canvas" width="500" height="500">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<div class="info" style="float: right">
+  Use  <b>a/z</b> to rotate about the <b>x-axis</b><br>
+  Use <b>s/x</b> to rotate about the <b>y-axis</b><br>
+  Use <b>d/c</b> to rotate about the <b>z-axis</b><br>
+  Use the <b>arrow buttons</b> to move the block<br>
+  <div style="float:right; margin:200px 300px 0 0">
+    Points:
+    <p id="points" style="float:right; margin: 0 0 0 15px; font-size: 35px">0</p>
+  </div>
+  <div id="status">
+    Press ENTER to start the game!
+  </div>
+</div>
+<br/>
+</body>
+</html>
